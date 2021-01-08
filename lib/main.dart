@@ -18,6 +18,23 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.teal,
         accentColor: Colors.tealAccent[700],
         visualDensity: VisualDensity.adaptivePlatformDensity,
+        fontFamily: 'Quicksand',
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              ),
+            ),
+        appBarTheme: AppBarTheme(
+          textTheme: ThemeData.light().textTheme.copyWith(
+                headline6: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+        ),
       ),
       home: MyHomePageState(),
     );
@@ -31,18 +48,18 @@ class MyHomePageState extends StatefulWidget {
 
 class _MyHomePageStateState extends State<MyHomePageState> {
   final List<Transaction> transactions = [
-    Transaction(
-      id: 't1',
-      title: 'Batee5a',
-      amount: 9.99,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id: 't2',
-      title: 'socks',
-      amount: 44.99,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id: 't1',
+    //   title: 'Batee5a',
+    //   amount: 9.99,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id: 't2',
+    //   title: 'socks',
+    //   amount: 44.99,
+    //   date: DateTime.now(),
+    // ),
   ];
 
   void _addTransaction(String title, double amount) {
@@ -70,7 +87,10 @@ class _MyHomePageStateState extends State<MyHomePageState> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Personal expenses"),
+        title: Text(
+          "Personal expenses",
+          style: Theme.of(context).appBarTheme.textTheme.headline6,
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.add),
@@ -88,6 +108,7 @@ class _MyHomePageStateState extends State<MyHomePageState> {
                 child: Text(
                   "Chart!",
                   textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.headline6,
                 ),
                 elevation: 8,
               ),
