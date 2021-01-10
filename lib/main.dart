@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
+import './widgets/chart.dart';
 
 import './models/transaction.dart';
 
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Personal Expenses',
       theme: ThemeData(
         primarySwatch: Colors.teal,
-        accentColor: Colors.tealAccent[700],
+        accentColor: Colors.tealAccent[800],
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -48,18 +49,24 @@ class MyHomePageState extends StatefulWidget {
 
 class _MyHomePageStateState extends State<MyHomePageState> {
   final List<Transaction> transactions = [
-    // Transaction(
-    //   id: 't1',
-    //   title: 'Batee5a',
-    //   amount: 9.99,
-    //   date: DateTime.now(),
-    // ),
-    // Transaction(
-    //   id: 't2',
-    //   title: 'socks',
-    //   amount: 44.99,
-    //   date: DateTime.now(),
-    // ),
+    Transaction(
+      id: 't2',
+      title: 'cheetos',
+      amount: 4.99,
+      date: DateTime.now().subtract(Duration(days: 1)),
+    ),
+    Transaction(
+      id: 't3',
+      title: 'coffee',
+      amount: 34.99,
+      date: DateTime.now().subtract(Duration(days: 2)),
+    ),
+    Transaction(
+      id: 't1',
+      title: 'popcorn',
+      amount: 9.99,
+      date: DateTime.now().subtract(Duration(days: 4)),
+    ),
   ];
 
   void _addTransaction(String title, double amount) {
@@ -73,6 +80,16 @@ class _MyHomePageStateState extends State<MyHomePageState> {
         ),
       );
     });
+  }
+
+  List<Transaction> get _recentTransactions {
+    return transactions.where((tx) {
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+          Duration(days: 7),
+        ),
+      );
+    }).toList();
   }
 
   void _openAddNewTransactionForm(BuildContext ctx) {
@@ -101,18 +118,7 @@ class _MyHomePageStateState extends State<MyHomePageState> {
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Container(
-              width: double.infinity,
-              child: Card(
-                color: Theme.of(context).primaryColor,
-                child: Text(
-                  "Chart!",
-                  textAlign: TextAlign.center,
-                  style: Theme.of(context).textTheme.headline6,
-                ),
-                elevation: 8,
-              ),
-            ),
+            Chart(_recentTransactions),
             TransactionList(transactions),
           ],
         ),
@@ -120,6 +126,7 @@ class _MyHomePageStateState extends State<MyHomePageState> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
+        backgroundColor: Theme.of(context).accentColor,
         onPressed: () => _openAddNewTransactionForm(context),
       ),
     );
