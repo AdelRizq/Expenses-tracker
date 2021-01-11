@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       title: 'Personal Expenses',
       theme: ThemeData(
         primarySwatch: Colors.teal,
-        accentColor: Colors.tealAccent[800],
+        accentColor: Colors.red,
         visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Quicksand',
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -25,6 +25,9 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'OpenSans',
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
+              ),
+              button: TextStyle(
+                color: Colors.white,
               ),
             ),
         appBarTheme: AppBarTheme(
@@ -50,33 +53,33 @@ class MyHomePageState extends StatefulWidget {
 class _MyHomePageStateState extends State<MyHomePageState> {
   final List<Transaction> transactions = [
     Transaction(
-      id: 't2',
+      id: 't1',
       title: 'cheetos',
       amount: 4.99,
       date: DateTime.now().subtract(Duration(days: 1)),
     ),
     Transaction(
-      id: 't3',
+      id: 't2',
       title: 'coffee',
       amount: 34.99,
       date: DateTime.now().subtract(Duration(days: 2)),
     ),
     Transaction(
-      id: 't1',
+      id: 't3',
       title: 'popcorn',
       amount: 9.99,
       date: DateTime.now().subtract(Duration(days: 4)),
     ),
   ];
 
-  void _addTransaction(String title, double amount) {
+  void _addTransaction(String title, double amount, DateTime date) {
     setState(() {
       transactions.add(
         Transaction(
-          id: 'tempId',
+          id: DateTime.now().toString(),
           title: title,
           amount: amount,
-          date: DateTime.now(),
+          date: date,
         ),
       );
     });
@@ -100,6 +103,12 @@ class _MyHomePageStateState extends State<MyHomePageState> {
         });
   }
 
+  void _deleteTransaction(String id) {
+    setState(() {
+      transactions.removeWhere((element) => element.id == id);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,14 +128,14 @@ class _MyHomePageStateState extends State<MyHomePageState> {
         child: Column(
           children: <Widget>[
             Chart(_recentTransactions),
-            TransactionList(transactions),
+            TransactionList(transactions, _deleteTransaction),
           ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
-        backgroundColor: Theme.of(context).accentColor,
+        backgroundColor: Theme.of(context).primaryColor,
         onPressed: () => _openAddNewTransactionForm(context),
       ),
     );
