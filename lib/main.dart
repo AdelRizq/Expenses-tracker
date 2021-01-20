@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 import './widgets/chart.dart';
@@ -6,6 +7,11 @@ import './widgets/chart.dart';
 import './models/transaction.dart';
 
 void main() {
+  // WidgetsFlutterBinding.ensureInitialized();
+  // SystemChrome.setPreferredOrientations([
+  //   DeviceOrientation.portraitDown,
+  //   DeviceOrientation.portraitUp,
+  // ]);
   runApp(MyApp());
 }
 
@@ -51,6 +57,8 @@ class MyHomePageState extends StatefulWidget {
 }
 
 class _MyHomePageStateState extends State<MyHomePageState> {
+  bool _showChart = false;
+
   final List<Transaction> transactions = [
     Transaction(
       id: 't1',
@@ -111,24 +119,70 @@ class _MyHomePageStateState extends State<MyHomePageState> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Personal expenses",
-          style: Theme.of(context).appBarTheme.textTheme.headline6,
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () => _openAddNewTransactionForm(context),
-          ),
-        ],
+    final mediaQuery = MediaQuery.of(context);
+    final bool _landscape =
+        mediaQuery.orientation == Orientation.landscape;
+
+    final appBar = AppBar(
+      title: Text(
+        "Personal expenses",
+        style: Theme.of(context).appBarTheme.textTheme.headline6,
       ),
+      actions: [
+        IconButton(
+          icon: Icon(Icons.add),
+          onPressed: () => _openAddNewTransactionForm(context),
+        ),
+      ],
+    );
+
+    final transactionListWidget = Container(
+      child: TransactionList(transactions, _deleteTransaction),
+      height: (mediaQuery.size.height -
+              appBar.preferredSize.height -
+              mediaQuery.padding.top) *
+          .7,
+    );
+
+    return Scaffold(
+      appBar: appBar,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
-            Chart(_recentTransactions),
-            TransactionList(transactions, _deleteTransaction),
+            if (_landscape)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Show chart"),
+                  Switch(
+                    value: _showChart,
+                    onChanged: (val) {
+                      setState(() {
+                        _showChart = val;
+                      });
+                    },
+                  ),
+                ],
+              ),
+            if (!_landscape)
+              Container(
+                child: Chart(_recentTransactions),
+                height: (mediaQuery.size.height -
+                        appBar.preferredSize.height -
+                        mediaQuery.padding.top) *
+                    .3,
+              ),
+            if (!_landscape) transactionListWidget,
+            if (_landscape)
+              _showChart
+                  ? Container(
+                      child: Chart(_recentTransactions),
+                      height: (mediaQuery.size.height -
+                              appBar.preferredSize.height -
+                              mediaQuery.padding.top) *
+                          .7,
+                    )
+                  : transactionListWidget,
           ],
         ),
       ),

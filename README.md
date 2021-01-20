@@ -1,4 +1,16 @@
-# 📅 <font color='008080'>Personal_expenses</font>
+![logo](https://user-images.githubusercontent.com/40351413/105207211-ed7f0280-5b4f-11eb-8e8d-1e7682eb8930.png)
+
+[![GitHub contributors](https://img.shields.io/github/contributors/AdelRizq/Personal_expenses)](https://github.com/AdelRizq/Personal_expenses/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/AdelRizq/Personal_expenses)](https://github.com/AdelRizq/Personal_expenses/issues)
+[![GitHub forks](https://img.shields.io/github/forks/AdelRizq/Personal_expenses)](https://github.com/AdelRizq/Personal_expenses/network)
+[![GitHub stars](https://img.shields.io/github/stars/AdelRizq/Personal_expenses)](https://github.com/AdelRizq/Personal_expenses/stargazers)
+[![GitHub license](https://img.shields.io/github/license/AdelRizq/Personal_expenses)](https://github.com/AdelRizq/Personal_expenses/blob/master/LICENSE)
+<img src="https://img.shields.io/github/languages/count/AdelRizq/Personal_expenses" />
+<img src="https://img.shields.io/github/languages/top/AdelRizq/Personal_expenses" />
+<img src="https://img.shields.io/github/languages/code-size/AdelRizq/Personal_expenses" />
+<img src="https://img.shields.io/github/issues-pr-raw/AdelRizq/Personal_expenses" />
+
+## <font color='008080'>About</font>
 
 > 💹 A flutter app that keeps track of your personal expenses and shows the last week expenses in some charts
 
