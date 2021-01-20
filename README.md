@@ -14,8 +14,6 @@
 
 > 💹 A flutter app that keeps track of your personal expenses and shows the last week expenses in some charts
 
-- - -
-
 ## 👨‍🎓 <font color='008080'>Things I learned from this project</font>
 
 1. <font color='fc6c85'>Flutter Fundemntals</font>
