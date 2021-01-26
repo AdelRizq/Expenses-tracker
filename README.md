@@ -1,14 +1,14 @@
 ![logo](https://user-images.githubusercontent.com/40351413/105207211-ed7f0280-5b4f-11eb-8e8d-1e7682eb8930.png)
 
-[![GitHub contributors](https://img.shields.io/github/contributors/AdelRizq/Personal_expenses)](https://github.com/AdelRizq/Personal_expenses/contributors)
-[![GitHub issues](https://img.shields.io/github/issues/AdelRizq/Personal_expenses)](https://github.com/AdelRizq/Personal_expenses/issues)
-[![GitHub forks](https://img.shields.io/github/forks/AdelRizq/Personal_expenses)](https://github.com/AdelRizq/Personal_expenses/network)
-[![GitHub stars](https://img.shields.io/github/stars/AdelRizq/Personal_expenses)](https://github.com/AdelRizq/Personal_expenses/stargazers)
-[![GitHub license](https://img.shields.io/github/license/AdelRizq/Personal_expenses)](https://github.com/AdelRizq/Personal_expenses/blob/master/LICENSE)
-<img src="https://img.shields.io/github/languages/count/AdelRizq/Personal_expenses" />
-<img src="https://img.shields.io/github/languages/top/AdelRizq/Personal_expenses" />
-<img src="https://img.shields.io/github/languages/code-size/AdelRizq/Personal_expenses" />
-<img src="https://img.shields.io/github/issues-pr-raw/AdelRizq/Personal_expenses" />
+[![GitHub contributors](https://img.shields.io/github/contributors/AdelRizq/Expenses-tracker)](https://github.com/AdelRizq/Expenses-tracker/contributors)
+[![GitHub issues](https://img.shields.io/github/issues/AdelRizq/Expenses-tracker)](https://github.com/AdelRizq/Expenses-tracker/issues)
+[![GitHub forks](https://img.shields.io/github/forks/AdelRizq/Expenses-tracker)](https://github.com/AdelRizq/Expenses-tracker/network)
+[![GitHub stars](https://img.shields.io/github/stars/AdelRizq/Expenses-tracker)](https://github.com/AdelRizq/Expenses-tracker/stargazers)
+[![GitHub license](https://img.shields.io/github/license/AdelRizq/Expenses-tracker)](https://github.com/AdelRizq/Expenses-tracker/blob/master/LICENSE)
+<img src="https://img.shields.io/github/languages/count/AdelRizq/Expenses-tracker" />
+<img src="https://img.shields.io/github/languages/top/AdelRizq/Expenses-tracker" />
+<img src="https://img.shields.io/github/languages/code-size/AdelRizq/Expenses-tracker" />
+<img src="https://img.shields.io/github/issues-pr-raw/AdelRizq/Expenses-tracker" />
 
 ## <font color='008080'>About</font>
 

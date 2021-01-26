@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import './widgets/new_transaction.dart';
 import './widgets/transaction_list.dart';
 import './widgets/chart.dart';
@@ -20,7 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Personal Expenses',
+      title: 'Expenses tracker',
       theme: ThemeData(
         primarySwatch: Colors.teal,
         accentColor: Colors.red,
@@ -120,12 +119,11 @@ class _MyHomePageStateState extends State<MyHomePageState> {
   @override
   Widget build(BuildContext context) {
     final mediaQuery = MediaQuery.of(context);
-    final bool _landscape =
-        mediaQuery.orientation == Orientation.landscape;
+    final bool _landscape = mediaQuery.orientation == Orientation.landscape;
 
     final appBar = AppBar(
       title: Text(
-        "Personal expenses",
+        "Expenses tracker",
         style: Theme.of(context).appBarTheme.textTheme.headline6,
       ),
       actions: [
