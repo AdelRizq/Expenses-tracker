@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+import 'transaction_item.dart';
+
 import '../models/transaction.dart';
 
 class TransactionList extends StatelessWidget {
@@ -19,7 +21,7 @@ class TransactionList extends StatelessWidget {
                   'No transactions yet!!',
                   style: Theme.of(context).textTheme.headline6,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Container(
@@ -30,47 +32,15 @@ class TransactionList extends StatelessWidget {
               ],
             );
           })
-        : ListView.builder(
-            // it renders just the viewed part of the list
-            itemBuilder: (context, index) {
-              return Card(
-                margin: EdgeInsets.symmetric(vertical: 8),
-                elevation: 6,
-                child: ListTile(
-                  leading: CircleAvatar(
-                    backgroundColor: Theme.of(context).accentColor,
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: FittedBox(
-                        child: Text('\$${_transactions[index].amount}'),
-                      ),
-                    ),
-                    radius: 30,
+        : ListView(
+            children: _transactions
+                .map(
+                  (tx) => TransactionItem(
+                    key: ValueKey(tx.id),
+                    transaction: tx,
+                    deleteTransaction: _deleteTransaction,
                   ),
-                  title: Text(
-                    _transactions[index].title,
-                    style: Theme.of(context).textTheme.headline6,
-                  ),
-                  subtitle: Text(
-                    DateFormat.yMd().format(_transactions[index].date),
-                  ),
-                  trailing: MediaQuery.of(context).size.width > 460
-                      ? FlatButton.icon(
-                          icon: Icon(Icons.delete),
-                          label: Text("Delete"),
-                          textColor: Colors.red,
-                          onPressed: () =>
-                              _deleteTransaction(_transactions[index].id),
-                        )
-                      : IconButton(
-                          icon: Icon(Icons.delete),
-                          onPressed: () =>
-                              _deleteTransaction(_transactions[index].id),
-                        ),
-                ),
-              );
-            },
-            itemCount: _transactions.length,
-          );
+                )
+                .toList());
   }
 }

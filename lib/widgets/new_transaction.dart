@@ -69,7 +69,7 @@ class _NewTransactionState extends State<NewTransaction> {
                 onSubmitted: (_) => _submitData(),
               ),
               TextField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   labelText: 'Amount',
                 ),
                 controller: _amountController,
@@ -90,7 +90,7 @@ class _NewTransactionState extends State<NewTransaction> {
                       ),
                     ),
                     FlatButton(
-                      child: Text(
+                      child: const Text(
                         'Choose a date',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
@@ -102,7 +102,7 @@ class _NewTransactionState extends State<NewTransaction> {
               ),
               RaisedButton(
                 elevation: 4,
-                child: Text('Add transaction'),
+                child: const Text('Add transaction'),
                 color: Theme.of(context).primaryColor,
                 textColor: Theme.of(context).textTheme.button.color,
                 onPressed: _submitData,
